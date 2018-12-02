@@ -15,7 +15,31 @@ This website can be [access by this link](https://rivernews.github.io/nba-group-
 
 ## Scaffold D3 in React
 
-- 
+- Write D3 in a saparate jsx.
+- Import all the stuff 
+
+```
+import PropTypes from 'prop-types'
+import * as d3 from "d3";
+import "d3-selection-multi";
+
+```
+
+- Do this in `render()`
+
+```
+<svg className="svg-content" ref={node => this.node = node}>
+</svg>
+```
+
+- Then bootstrap D3 by
+
+```
+this.svg = d3.select(this.node)
+    ...
+```
+
+- Start D3 coding!
 
 ---
 
