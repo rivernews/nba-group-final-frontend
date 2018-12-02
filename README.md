@@ -1,3 +1,7 @@
+# SI 649 NBA User Facing App
+
+This website can be [access by this link](https://rivernews.github.io/nba-group-final-frontend/)
+
 ## Installation & Continuous Integration (CI) Setup
 
 - Install all required npm package `npm i d3 gh-pages d3-selection-multi node-sass -S`
