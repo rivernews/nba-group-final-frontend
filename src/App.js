@@ -29,7 +29,6 @@ class App extends Component {
                     <h1>NBA Viz</h1>
                 </header>
                 <content className="App-content">
-                    <ExampleViz svgSize={this.svgSize} />
                     <ExampleViz_zhiyi svgSize={this.svgSize} />
                 </content>
             </div>
