@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import * as d3 from "d3";
 import "d3-selection-multi";
 
+import './ExampleViz.scss'
+
 import csvData from "../../data/processed_joined_df.csv";
 
 class ExampleViz extends Component {
@@ -40,6 +42,8 @@ class ExampleViz extends Component {
                 })
             }    
         )
+
+        this.setupSVGGradients()
     }
 
     componentDidUpdate() {
@@ -47,7 +51,7 @@ class ExampleViz extends Component {
     }
 
     /**
-     * D3 Wrapper Functions
+     * D3 Setup Wrapper Functions
      */
     initializeVizSpace() {
         this.svg = d3.select(this.node)
@@ -77,17 +81,61 @@ class ExampleViz extends Component {
         })
     }
 
+    setupSVGGradients() {
+        this.svgDefs = this.svg.append('defs')
+        this.gradients = {}
+        
+        this.gradients.example = this.svgDefs.append('linearGradient')
+        .attrs({
+            id: 'exampleGradient'
+        });
+        this.gradients.example.append('stop')
+        .attrs({
+            class: 'stop-left',
+            offset: 0
+        })
+        this.gradients.example.append('stop')
+        .attrs({
+            class: 'stop-right',
+            offset: 1
+        })
+    }
+
+    /**
+     * D3 Update Wrapepr Functions
+     */
     drawExample() {
+        this.drawExampleRect({
+            x: 20,
+            y: 20,
+            width: '100px',
+            height: '400px'
+        })
+        this.drawExampleRect({
+            x: 50,
+            y: 20,
+            width: '60px',
+            height: '300px'
+        })
+        this.drawExampleRect({
+            x: 90,
+            y: 20,
+            width: '50px',
+            height: '250px'
+        })
+        this.drawExampleRect({
+            x: 130,
+            y: 20,
+            width: '40px',
+            height: '200px'
+        })
+    }
+
+    drawExampleRect(props) {
         this.svg.append('rect')
-            .attrs({
-                x: 20,
-                y: 20,
-                width: '100px',
-                height: '400px'
-            })
-            .styles({
-                fill: 'red'
-            })
+            .attrs(Object.assign({}, props, {
+                class: 'exmaple-rect',
+            }))
             ;
     }
 

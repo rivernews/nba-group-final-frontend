@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-import { ExampleViz } from "./components/ExampleViz/ExampleViz";
+import { ExampleViz} from "./components/ExampleViz/ExampleViz";
 
 class App extends Component {
 
