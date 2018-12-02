@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import * as d3 from "d3";
 import "d3-selection-multi";
 
+import csvData from "../../data/processed_joined_df.csv";
+
 class ExampleViz extends Component {
     static propTypes = {
         svgSize: PropTypes.shape({
@@ -19,13 +21,25 @@ class ExampleViz extends Component {
         })
     }
 
+    state = {
+        data: null
+    }
+
     constructor(props) {
         super(props)
     }
 
     componentDidMount() {
         this.initializeVizSpace()
-        this.drawExample()
+        this.loadDataset().then(
+            (data) => {
+                this.setState({
+                    data
+                }, () => {
+                    console.log('data', this.state.data)
+                })
+            }    
+        )
     }
 
     componentDidUpdate() {
@@ -41,27 +55,40 @@ class ExampleViz extends Component {
                 viewBox: `0 0 ${this.getSvgOuterWidth()} ${this.getSvgOuterHeight()}`,
                 preserveAspectRatio: `xMidYMid meet`
             })
-        ;
+            ;
 
         this.svg = this.svg.append("g")
             .attrs({
                 "transform": `translate(${this.props.svgSize.margin.left}, ${this.props.svgSize.margin.top})`,
             })
-        ;
+            ;
+    }
+
+    loadDataset() {
+        return new Promise((resolve, reject) => {
+            this.data = []
+            d3.csv(csvData).then((data) => {
+                this.data = JSON.parse(JSON.stringify(data))
+                resolve(this.data)
+            }, (error) => {
+                console.error(error)
+                reject(error)
+            })
+        })
     }
 
     drawExample() {
         this.svg.append('rect')
-        .attrs({
-            x: 20,
-            y: 20,
-            width: '100px',
-            height: '400px'
-        })
-        .styles({
-            fill: 'red'
-        })
-        ;
+            .attrs({
+                x: 20,
+                y: 20,
+                width: '100px',
+                height: '400px'
+            })
+            .styles({
+                fill: 'red'
+            })
+            ;
     }
 
     /**

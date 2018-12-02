@@ -47,6 +47,7 @@ this.svg = d3.select(this.node)
 
 - [Import and Export in modern js](https://stackoverflow.com/questions/41337709/what-is-use-of-curly-braces-in-es6-import-statement)
 - [Many ways to integrate D3 with React](https://www.smashingmagazine.com/2018/02/react-d3-ecosystem/)
+  - [Also about using D3 with React, give D3 more power to animate](https://cmichel.io/how-to-use-d3js-in-react)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
