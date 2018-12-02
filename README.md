@@ -1,3 +1,22 @@
+## Installation & Continuous Integration (CI) Setup
+
+- Install all required npm package `npm i d3 gh-pages d3-selection-multi node-sass -S`
+
+- Setup github page. Edit `package.json`:
+  - Add in 1st level `"homepage" : "https://rivernews.github.io/[your-repo-name]/"`, or for this repo, `"homepage" : "https://rivernews.github.io/nba-group-final-frontend/"`
+  - Add under `scripts`: `"predeploy" : "npm run build"` and `"deploy" : "gh-pages -d build"`
+  - **Deploy on github page! `npm run deploy`**, you'll use this all the time whenever release.
+
+- Use `.scss` for now on. You have to rename existing `App.css` to `App.scss` yourself. That's seem like the best way at this point.
+
+## Scaffold D3 in React
+
+- 
+
+---
+
+# Reference
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
